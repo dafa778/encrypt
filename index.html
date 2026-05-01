@@ -152,81 +152,87 @@
             flex-wrap: wrap;
         }
         
-        /* RESULT BOX - DIPERBESAR & RAPIH */
+        /* ========== RESULT BOX YANG RAPIH ========== */
         .result-box {
-            background: #0f0f1a;
+            background: #0d1117;
             border-radius: 16px;
-            padding: 16px;
+            padding: 0;
             margin-top: 20px;
             display: none;
-            border: 1px solid #333;
+            border: 1px solid #30363d;
+            overflow: hidden;
         }
+        
         .result-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
+            padding: 12px 16px;
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
             flex-wrap: wrap;
-            gap: 8px;
-        }
-        .result-header strong {
-            color: #00ff41;
-            font-size: 13px;
-            background: #1a202c;
-            padding: 5px 12px;
-            border-radius: 20px;
+            gap: 10px;
         }
         
-        /* === INI YANG DIPERBAIKI: SCROLL + WRAP + FONT === */
-        .result-content {
-            background: #0a0a0f;
-            border-radius: 12px;
-            padding: 14px;
-            overflow-x: auto;
-            overflow-y: auto;
-            max-height: 350px;
+        .result-header strong {
+            color: #58a6ff;
+            font-size: 13px;
+            font-family: monospace;
         }
+        
+        .result-content {
+            background: #0d1117;
+            padding: 16px;
+            max-height: 400px;
+            overflow: auto;
+        }
+        
         .result-content pre {
-            color: #00ff41;
-            font-family: 'Courier New', monospace;
-            font-size: 11px;
+            color: #e6edf3;
+            font-family: 'Courier New', 'Fira Code', monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            margin: 0;
             white-space: pre-wrap;
             word-wrap: break-word;
             word-break: break-all;
-            margin: 0;
-            line-height: 1.5;
         }
-        /* Scrollbar styling */
+        
+        /* Scrollbar keren */
         .result-content::-webkit-scrollbar {
             width: 8px;
             height: 8px;
         }
         .result-content::-webkit-scrollbar-track {
-            background: #1a1a1a;
+            background: #161b22;
             border-radius: 10px;
         }
         .result-content::-webkit-scrollbar-thumb {
-            background: #667eea;
+            background: #58a6ff;
             border-radius: 10px;
+        }
+        .result-content::-webkit-scrollbar-thumb:hover {
+            background: #79c0ff;
         }
         
         .copy-btn {
-            background: #48bb78;
+            background: #238636;
             padding: 6px 14px;
             border: none;
             border-radius: 8px;
             color: white;
             cursor: pointer;
-            font-size: 11px;
+            font-size: 12px;
+            transition: all 0.2s;
         }
         .copy-btn:hover {
-            background: #38a169;
+            background: #2ea043;
         }
         .download-btn {
-            background: #e53e3e;
+            background: #da3633;
         }
         .download-btn:hover {
-            background: #c53030;
+            background: #f85149;
         }
         
         .status {
@@ -234,19 +240,18 @@
             padding: 10px 14px;
             border-radius: 12px;
             margin-bottom: 18px;
-            font-size: 12px;
+            font-size: 13px;
             color: #2d3748;
             border-left: 4px solid #667eea;
         }
         
         .info-panel {
-            background: #1a202c;
-            border-radius: 10px;
-            padding: 10px;
-            margin-top: 12px;
-            font-size: 11px;
-            color: #888;
+            background: #161b22;
+            padding: 10px 16px;
+            font-size: 12px;
+            color: #8b949e;
             text-align: center;
+            border-top: 1px solid #30363d;
         }
         
         .footer {
@@ -263,6 +268,7 @@
             .container { padding: 12px; }
             .card { padding: 18px; }
             .menu-btn { padding: 7px 18px; font-size: 13px; }
+            .result-content pre { font-size: 10px; }
         }
     </style>
 </head>
@@ -285,7 +291,7 @@
         <div class="card-title">📝 STEP 1: ENCODE HARD (5 Layer)</div>
         <div class="status" id="statusEncode">💡 Masukkan teks, lalu klik tombol encode</div>
         
-        <textarea id="inputText" rows="4" placeholder="Masukkan teks atau kode HTML di sini...&#10;Contoh: &#60;h1&#62;Halo Dunia&#60;/h1&#62;"></textarea>
+        <textarea id="inputText" rows="4" placeholder="Masukkan teks atau kode HTML di sini...&#10;&#10;Contoh: &#60;h1&#62;Halo Dunia&#60;/h1&#62;"></textarea>
         
         <div class="btn-group">
             <button class="btn" id="btnEncode">🔥 ENCODE HARD</button>
@@ -349,7 +355,7 @@
                 </div>
             </div>
             <div class="result-content">
-                <pre id="autoOutput" style="max-height: 350px;"></pre>
+                <pre id="autoOutput" style="max-height: 400px;"></pre>
             </div>
             <div class="info-panel">
                 ✅ File ini bisa langsung dibuka di browser & akan auto decode 5 layer!
@@ -468,6 +474,10 @@
         encodedInput.value = result;
         generateInput.value = result;
         statusEncode.innerHTML = '✅ Encode berhasil! Panjang: ' + result.length + ' karakter';
+        // Scroll ke hasil
+        setTimeout(function() {
+            encodeResult.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
     };
     
     // ========== DECODE ==========
@@ -485,6 +495,9 @@
         } else {
             statusDecode.innerHTML = '✅ Decode berhasil! Teks asli: ' + result.length + ' karakter';
         }
+        setTimeout(function() {
+            decodeResult.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
     };
     
     // ========== GENERATE AUTO DECODE ==========
@@ -533,24 +546,35 @@
         autoOutput.textContent = html;
         autoResult.style.display = 'block';
         statusGenerate.innerHTML = '✅ Auto decode HTML siap! Klik COPY atau DOWNLOAD';
+        setTimeout(function() {
+            autoResult.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
     };
     
-    // ========== COPY ==========
+    // ========== COPY BUTTONS ==========
     document.getElementById('btnCopyEncode').onclick = function() {
         var text = encodedOutput.textContent;
-        if (text) { navigator.clipboard.writeText(text); alert('✅ Copy berhasil!'); }
-        else { alert('⚠️ Tidak ada hasil encode!'); }
+        if (text && text !== '') { 
+            navigator.clipboard.writeText(text); 
+            alert('✅ Hasil encode berhasil di-copy!'); 
+        } else { 
+            alert('⚠️ Tidak ada hasil encode!'); 
+        }
     };
     
     document.getElementById('btnCopyAuto').onclick = function() {
         var text = autoOutput.textContent;
-        if (text) { navigator.clipboard.writeText(text); alert('✅ Copy berhasil!'); }
-        else { alert('⚠️ Generate dulu!'); }
+        if (text && text !== '') { 
+            navigator.clipboard.writeText(text); 
+            alert('✅ File auto decode berhasil di-copy!'); 
+        } else { 
+            alert('⚠️ Generate dulu auto decode-nya!'); 
+        }
     };
     
     document.getElementById('btnDownload').onclick = function() {
         var text = autoOutput.textContent;
-        if (text) {
+        if (text && text !== '') {
             var blob = new Blob([text], {type: 'text/html'});
             var url = URL.createObjectURL(blob);
             var a = document.createElement('a');
@@ -560,21 +584,25 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-            alert('✅ Download berhasil!');
-        } else { alert('⚠️ Generate dulu!'); }
+            alert('✅ File auto_decode.html berhasil di-download!');
+        } else { 
+            alert('⚠️ Generate dulu auto decode-nya!'); 
+        }
     };
     
-    // ========== CLEAR ==========
+    // ========== CLEAR BUTTONS ==========
     document.getElementById('btnClearEncode').onclick = function() {
         inputText.value = '';
         encodeResult.style.display = 'none';
         statusEncode.innerHTML = '💡 Masukkan teks, lalu klik tombol encode';
     };
+    
     document.getElementById('btnClearDecode').onclick = function() {
         encodedInput.value = '';
         decodeResult.style.display = 'none';
         statusDecode.innerHTML = '💡 Paste hasil encode, lalu klik decode';
     };
+    
     document.getElementById('btnClearGenerate').onclick = function() {
         generateInput.value = '';
         autoResult.style.display = 'none';
@@ -582,4 +610,4 @@
     };
 </script>
 </body>
-</html>
+    </html>
