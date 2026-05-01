@@ -22,7 +22,6 @@
             position: relative;
         }
         
-        /* Overlay putih tipis biar baca */
         body::before {
             content: '';
             position: fixed;
@@ -30,25 +29,24 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             z-index: 0;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 20px;
+            padding: 20px;
             position: relative;
             z-index: 1;
         }
         
-        /* Header */
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
         .header h1 {
-            font-size: 36px;
+            font-size: 32px;
             background: linear-gradient(135deg, #667eea, #764ba2);
             -webkit-background-clip: text;
             background-clip: text;
@@ -56,23 +54,23 @@
         }
         .header p {
             color: #4a5568;
-            margin-top: 10px;
+            margin-top: 8px;
         }
         
         /* Menu Tabs */
         .menu-tabs {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 12px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
         }
         .menu-btn {
-            padding: 12px 30px;
+            padding: 10px 28px;
             background: white;
             border: 2px solid #e2e8f0;
             border-radius: 40px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             color: #4a5568;
             cursor: pointer;
@@ -82,48 +80,43 @@
             background: #667eea;
             border-color: #667eea;
             color: white;
-            transform: translateY(-2px);
         }
         .menu-btn.active {
             background: #667eea;
             border-color: #667eea;
             color: white;
-            box-shadow: 0 4px 12px rgba(102,126,234,0.3);
         }
         
         /* Card */
         .card {
             background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(2px);
             border-radius: 24px;
-            padding: 30px;
+            padding: 25px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             margin-bottom: 20px;
-            border: 1px solid rgba(0,0,0,0.05);
         }
         
         .card-title {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
             color: #2d3748;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
             border-bottom: 2px solid #e2e8f0;
         }
         
         /* Form elements */
-        textarea, input, select {
+        textarea, input {
             width: 100%;
-            padding: 14px 16px;
+            padding: 12px 14px;
             background: #f7fafc;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
-            font-size: 14px;
+            font-size: 13px;
             font-family: 'Courier New', monospace;
-            transition: all 0.2s;
             margin-bottom: 15px;
         }
-        textarea:focus, input:focus, select:focus {
+        textarea:focus, input:focus {
             outline: none;
             border-color: #667eea;
             box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
@@ -131,7 +124,7 @@
         
         /* Button */
         .btn {
-            padding: 12px 24px;
+            padding: 10px 22px;
             background: #667eea;
             border: none;
             border-radius: 12px;
@@ -139,7 +132,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
-            font-size: 14px;
+            font-size: 13px;
         }
         .btn:hover {
             background: #5a67d8;
@@ -155,62 +148,79 @@
         }
         .btn-group {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
-            margin-top: 10px;
         }
         
-        /* Result Box - RAPIH */
+        /* RESULT BOX - DIPERBESAR & RAPIH */
         .result-box {
-            background: #f7fafc;
+            background: #0f0f1a;
             border-radius: 16px;
-            padding: 20px;
+            padding: 16px;
             margin-top: 20px;
             display: none;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #333;
         }
         .result-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
         .result-header strong {
-            color: #2d3748;
-            font-size: 14px;
-            background: #e2e8f0;
-            padding: 6px 12px;
+            color: #00ff41;
+            font-size: 13px;
+            background: #1a202c;
+            padding: 5px 12px;
             border-radius: 20px;
         }
+        
+        /* === INI YANG DIPERBAIKI: SCROLL + WRAP + FONT === */
         .result-content {
-            background: #1a202c;
+            background: #0a0a0f;
             border-radius: 12px;
-            padding: 16px;
+            padding: 14px;
             overflow-x: auto;
+            overflow-y: auto;
+            max-height: 350px;
         }
         .result-content pre {
             color: #00ff41;
             font-family: 'Courier New', monospace;
-            font-size: 12px;
+            font-size: 11px;
             white-space: pre-wrap;
+            word-wrap: break-word;
             word-break: break-all;
             margin: 0;
+            line-height: 1.5;
         }
+        /* Scrollbar styling */
+        .result-content::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .result-content::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 10px;
+        }
+        .result-content::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 10px;
+        }
+        
         .copy-btn {
             background: #48bb78;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border: none;
             border-radius: 8px;
             color: white;
             cursor: pointer;
-            font-size: 12px;
-            transition: all 0.2s;
+            font-size: 11px;
         }
         .copy-btn:hover {
             background: #38a169;
-            transform: scale(1.02);
         }
         .download-btn {
             background: #e53e3e;
@@ -219,45 +229,40 @@
             background: #c53030;
         }
         
-        /* Status */
         .status {
             background: #e2e8f0;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-radius: 12px;
-            margin-bottom: 20px;
-            font-size: 13px;
+            margin-bottom: 18px;
+            font-size: 12px;
             color: #2d3748;
             border-left: 4px solid #667eea;
         }
         
-        /* Info panel */
         .info-panel {
-            background: #e2e8f0;
-            border-radius: 12px;
-            padding: 12px 16px;
-            margin-top: 15px;
-            font-size: 12px;
-            color: #4a5568;
+            background: #1a202c;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 12px;
+            font-size: 11px;
+            color: #888;
             text-align: center;
         }
         
-        /* Footer */
         .footer {
             text-align: center;
-            margin-top: 30px;
-            padding: 20px;
+            margin-top: 25px;
+            padding: 15px;
             color: #718096;
-            font-size: 12px;
+            font-size: 11px;
             background: rgba(255,255,255,0.8);
             border-radius: 16px;
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
-            .container { padding: 15px; }
-            .card { padding: 20px; }
-            .menu-btn { padding: 8px 20px; font-size: 14px; }
-            .result-header { flex-direction: column; align-items: flex-start; }
+            .container { padding: 12px; }
+            .card { padding: 18px; }
+            .menu-btn { padding: 7px 18px; font-size: 13px; }
         }
     </style>
 </head>
@@ -280,7 +285,7 @@
         <div class="card-title">📝 STEP 1: ENCODE HARD (5 Layer)</div>
         <div class="status" id="statusEncode">💡 Masukkan teks, lalu klik tombol encode</div>
         
-        <textarea id="inputText" rows="5" placeholder="Masukkan teks atau kode HTML di sini...&#10;&#10;Contoh: &#60;h1&#62;Halo Dunia&#60;/h1&#62;"></textarea>
+        <textarea id="inputText" rows="4" placeholder="Masukkan teks atau kode HTML di sini...&#10;Contoh: &#60;h1&#62;Halo Dunia&#60;/h1&#62;"></textarea>
         
         <div class="btn-group">
             <button class="btn" id="btnEncode">🔥 ENCODE HARD</button>
@@ -338,13 +343,13 @@
         <div id="autoResult" class="result-box">
             <div class="result-header">
                 <strong>📁 FILE AUTO DECODE (READY PAKAI)</strong>
-                <div style="display: flex; gap: 10px;">
+                <div style="display: flex; gap: 8px;">
                     <button class="copy-btn" id="btnCopyAuto">📋 COPY HTML</button>
-                    <button class="copy-btn download-btn" id="btnDownload">💾 DOWNLOAD index.html</button>
+                    <button class="copy-btn download-btn" id="btnDownload">💾 DOWNLOAD</button>
                 </div>
             </div>
             <div class="result-content">
-                <pre id="autoOutput" style="max-height: 400px;"></pre>
+                <pre id="autoOutput" style="max-height: 350px;"></pre>
             </div>
             <div class="info-panel">
                 ✅ File ini bisa langsung dibuka di browser & akan auto decode 5 layer!
@@ -354,11 +359,12 @@
     
     <div class="footer">
         <p>🔐 5 Layer Encode: Base64 → Rot13 → Reverse → XOR 0x42 → URL Encode</p>
+        <p style="margin-top:5px;">RAZOR TOOLSET | Educational purposes only. Only test websites you own.</p>
     </div>
 </div>
 
 <script>
-    // ========== FUNGSI ENCODE/DECODE (FIXED) ==========
+    // ========== FUNGSI ENCODE/DECODE ==========
     function encodeBase64(str) {
         try { 
             return btoa(str); 
@@ -381,7 +387,6 @@
         }
     }
     
-    // ========== ROT13 - FIXED (Quintal diganti 97) ==========
     function rot13(str) {
         return str.replace(/[a-zA-Z]/g, function(c) {
             var base = (c <= 'Z') ? 65 : 97;
@@ -389,34 +394,32 @@
         });
     }
     
-    // ========== HARD ENCODE 5 LAYER ==========
     function hardEncode(plain) {
         try {
             if (!plain) return "";
-            var l1 = encodeBase64(plain);           // Layer 1: Base64
-            var l2 = rot13(l1);                      // Layer 2: Rot13
-            var l3 = l2.split('').reverse().join(''); // Layer 3: Reverse
+            var l1 = encodeBase64(plain);
+            var l2 = rot13(l1);
+            var l3 = l2.split('').reverse().join('');
             var l4 = l3.split('').map(function(ch) { 
                 return String.fromCharCode(ch.charCodeAt(0) ^ 0x42); 
-            }).join('');                             // Layer 4: XOR 0x42
-            var l5 = encodeURIComponent(l4);         // Layer 5: URL Encode
+            }).join('');
+            var l5 = encodeURIComponent(l4);
             return l5;
         } catch(e) { 
             return "ERROR: " + e.message; 
         }
     }
     
-    // ========== HARD DECODE 5 LAYER ==========
     function hardDecode(encoded) {
         try {
             if (!encoded) return "";
-            var l5 = decodeURIComponent(encoded);    // Layer 5: URL Decode
+            var l5 = decodeURIComponent(encoded);
             var l4 = l5.split('').map(function(ch) { 
                 return String.fromCharCode(ch.charCodeAt(0) ^ 0x42); 
-            }).join('');                             // Layer 4: XOR 0x42
-            var l3 = l4.split('').reverse().join(''); // Layer 3: Reverse
-            var l2 = rot13(l3);                      // Layer 2: Rot13
-            var l1 = decodeBase64(l2);               // Layer 1: Base64
+            }).join('');
+            var l3 = l4.split('').reverse().join('');
+            var l2 = rot13(l3);
+            var l1 = decodeBase64(l2);
             return l1;
         } catch(e) { 
             return "DECODE ERROR: " + e.message; 
@@ -465,9 +468,6 @@
         encodedInput.value = result;
         generateInput.value = result;
         statusEncode.innerHTML = '✅ Encode berhasil! Panjang: ' + result.length + ' karakter';
-        setTimeout(function() { 
-            window.scrollTo({ top: encodeResult.offsetTop - 100, behavior: 'smooth' }); 
-        }, 100);
     };
     
     // ========== DECODE ==========
@@ -481,15 +481,10 @@
         decodedOutput.textContent = result;
         decodeResult.style.display = 'block';
         if (result.indexOf('ERROR') >= 0 || result.indexOf('DECODE ERROR') >= 0) {
-            decodedOutput.style.color = '#ff6b6b';
             statusDecode.innerHTML = '❌ ' + result;
         } else {
-            decodedOutput.style.color = '#00ff41';
             statusDecode.innerHTML = '✅ Decode berhasil! Teks asli: ' + result.length + ' karakter';
         }
-        setTimeout(function() { 
-            window.scrollTo({ top: decodeResult.offsetTop - 100, behavior: 'smooth' }); 
-        }, 100);
     };
     
     // ========== GENERATE AUTO DECODE ==========
@@ -504,76 +499,58 @@
         
         var html = '<!DOCTYPE html>\n<html>\n<head>\n';
         html += '<meta charset="UTF-8">\n';
-        html += '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n';
-        html += '<title>AUTO DECODE - ENCODE HARD</title>\n';
+        html += '<title>AUTO DECODE</title>\n';
         html += '<style>\n';
         html += '*{margin:0;padding:0;box-sizing:border-box;}\n';
-        html += 'body{background:linear-gradient(135deg,#0a0a0a,#1a0000);font-family:monospace;min-height:100vh;display:flex;justify-content:center;align-items:center;}\n';
-        html += '.loader{text-align:center;color:#00ff41;}\n';
-        html += '.spinner{width:60px;height:60px;border:4px solid #ff0040;border-top-color:transparent;border-radius:50%;animation:s 1s linear infinite;margin:20px auto;}\n';
+        html += 'body{background:#0a0a0a;font-family:monospace;display:flex;justify-content:center;align-items:center;min-height:100vh;}\n';
+        html += '.loader{text-align:center;color:#0f0;}\n';
+        html += '.spinner{width:50px;height:50px;border:3px solid #f00;border-top-color:transparent;border-radius:50%;animation:s 1s linear infinite;margin:20px auto;}\n';
         html += '@keyframes s{to{transform:rotate(360deg);}}\n';
-        html += '.error{color:#ff0040;text-align:center;margin-top:20px;}\n';
         html += '</style>\n';
         html += '</head>\n<body>\n';
         html += '<div class="loader" id="load">\n';
         html += '<div class="spinner"></div>\n';
-        html += '<h2>🔓 DECODING 5 LAYER...</h2>\n';
-        html += '<div id="status" style="font-size:12px;margin-top:10px;"></div>\n';
+        html += '<h2>🔓 DECODING...</h2>\n';
+        html += '<div id="status"></div>\n';
         html += '</div>\n';
         html += '<script>\n';
         html += 'const data = `' + escaped + '`;\n';
-        html += 'function updateStatus(s){var el=document.getElementById("status");if(el)el.innerHTML=s;}\n';
-        html += 'function rot13(s){return s.replace(/[a-zA-Z]/g,function(c){var b=c<="Z"?65:97;return String.fromCharCode((c.charCodeAt(0)-b+13)%26+b);});}\n';
-        html += 'function decodeBase64(s){try{return atob(s);}catch(e){return decodeURIComponent(atob(s).split("").map(function(c){return "%"+("00"+c.charCodeAt(0).toString(16)).slice(-2);}).join(""));}}\n';
+        html += 'function us(msg){var el=document.getElementById("status");if(el)el.innerHTML=msg;}\n';
+        html += 'function r13(s){return s.replace(/[a-zA-Z]/g,function(c){var b=c<="Z"?65:97;return String.fromCharCode((c.charCodeAt(0)-b+13)%26+b);});}\n';
+        html += 'function b64d(s){try{return atob(s);}catch(e){return decodeURIComponent(atob(s).split("").map(function(c){return "%"+("00"+c.charCodeAt(0).toString(16)).slice(-2);}).join(""));}}\n';
         html += 'try{\n';
-        html += 'updateStatus("🔓 Layer 5: URL Decode...");\n';
-        html += 'var l5=decodeURIComponent(data);\n';
-        html += 'updateStatus("🔓 Layer 4: XOR 0x42 Decode...");\n';
-        html += 'var l4=l5.split("").map(function(ch){return String.fromCharCode(ch.charCodeAt(0)^0x42);}).join("");\n';
-        html += 'updateStatus("🔓 Layer 3: Reverse...");\n';
-        html += 'var l3=l4.split("").reverse().join("");\n';
-        html += 'updateStatus("🔓 Layer 2: Rot13 Decode...");\n';
-        html += 'var l2=rot13(l3);\n';
-        html += 'updateStatus("🔓 Layer 1: Base64 Decode...");\n';
-        html += 'var l1=decodeBase64(l2);\n';
-        html += 'updateStatus("✅ SUCCESS! Memuat halaman...");\n';
+        html += 'us("Layer 5...");var l5=decodeURIComponent(data);\n';
+        html += 'us("Layer 4...");var l4=l5.split("").map(function(ch){return String.fromCharCode(ch.charCodeAt(0)^0x42);}).join("");\n';
+        html += 'us("Layer 3...");var l3=l4.split("").reverse().join("");\n';
+        html += 'us("Layer 2...");var l2=r13(l3);\n';
+        html += 'us("Layer 1...");var l1=b64d(l2);\n';
+        html += 'us("✅ SUCCESS!");\n';
         html += 'document.open();document.write(l1);document.close();\n';
-        html += '}catch(e){document.getElementById("load").innerHTML="<div class=error><h2>❌ GAGAL DECODE</h2><p>"+e.message+"</p></div>";}\n';
+        html += '}catch(e){document.getElementById("load").innerHTML="<h2 style=color:red>❌ ERROR: "+e.message+"</h2>";}\n';
         html += '<\/script>\n';
         html += '</body>\n</html>';
         
         autoOutput.textContent = html;
         autoResult.style.display = 'block';
         statusGenerate.innerHTML = '✅ Auto decode HTML siap! Klik COPY atau DOWNLOAD';
-        setTimeout(function() { 
-            window.scrollTo({ top: autoResult.offsetTop - 100, behavior: 'smooth' }); 
-        }, 100);
     };
     
-    // ========== COPY BUTTONS ==========
+    // ========== COPY ==========
     document.getElementById('btnCopyEncode').onclick = function() {
         var text = encodedOutput.textContent;
-        if (text && text !== '') { 
-            navigator.clipboard.writeText(text); 
-            alert('✅ Hasil encode berhasil di-copy!'); 
-        } else { 
-            alert('⚠️ Tidak ada hasil encode!'); 
-        }
+        if (text) { navigator.clipboard.writeText(text); alert('✅ Copy berhasil!'); }
+        else { alert('⚠️ Tidak ada hasil encode!'); }
     };
     
     document.getElementById('btnCopyAuto').onclick = function() {
         var text = autoOutput.textContent;
-        if (text && text !== '') { 
-            navigator.clipboard.writeText(text); 
-            alert('✅ File auto decode berhasil di-copy!'); 
-        } else { 
-            alert('⚠️ Generate dulu auto decode-nya!'); 
-        }
+        if (text) { navigator.clipboard.writeText(text); alert('✅ Copy berhasil!'); }
+        else { alert('⚠️ Generate dulu!'); }
     };
     
     document.getElementById('btnDownload').onclick = function() {
         var text = autoOutput.textContent;
-        if (text && text !== '') {
+        if (text) {
             var blob = new Blob([text], {type: 'text/html'});
             var url = URL.createObjectURL(blob);
             var a = document.createElement('a');
@@ -583,25 +560,21 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-            alert('✅ File auto_decode.html berhasil di-download!');
-        } else { 
-            alert('⚠️ Generate dulu auto decode-nya!'); 
-        }
+            alert('✅ Download berhasil!');
+        } else { alert('⚠️ Generate dulu!'); }
     };
     
-    // ========== CLEAR BUTTONS ==========
+    // ========== CLEAR ==========
     document.getElementById('btnClearEncode').onclick = function() {
         inputText.value = '';
         encodeResult.style.display = 'none';
         statusEncode.innerHTML = '💡 Masukkan teks, lalu klik tombol encode';
     };
-    
     document.getElementById('btnClearDecode').onclick = function() {
         encodedInput.value = '';
         decodeResult.style.display = 'none';
         statusDecode.innerHTML = '💡 Paste hasil encode, lalu klik decode';
     };
-    
     document.getElementById('btnClearGenerate').onclick = function() {
         generateInput.value = '';
         autoResult.style.display = 'none';
